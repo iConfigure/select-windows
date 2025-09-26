@@ -1,0 +1,226 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <style>
+            :root {
+                --bg: #0a0a0a;
+                --fg: #fafafa;
+                --muted: #fff0d5;
+                --secondary: #fac156;
+                --brand: #1e2c51;
+            }
+            * {
+                box-sizing: border-box;
+            }
+            body {
+                margin: 0;
+                font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
+                background: #fff;
+                color: #111;
+            }
+            .hero {
+                position: relative;
+                overflow: hidden;
+                background: linear-gradient(180deg, #f6f7f8, #fff);
+            }
+            .wrap {
+                max-width: 1100px;
+                margin: 0 auto;
+                padding: 56px 20px;
+            }
+            .badge {
+                display: inline-block;
+                padding: 6px 10px;
+                border-radius: 999px;
+                background: var(--secondary);
+                color: var(--brand);
+                font-weight: 600;
+                font-size: 12px;
+                letter-spacing: 0.2px;
+            }
+            h1 {
+                margin: 0.6em 0 0.3em;
+                font-size: clamp(28px, 4vw, 46px);
+                line-height: 1.05;
+            }
+            p.lead {
+                font-size: clamp(16px, 2.1vw, 20px);
+                color: #444;
+                max-width: 60ch;
+            }
+            .cta {
+                display: flex;
+                gap: 12px;
+                flex-wrap: wrap;
+                margin-top: 18px;
+            }
+            .btn {
+                appearance: none;
+                border: 0;
+                cursor: pointer;
+                border-radius: 10px;
+                padding: 12px 16px;
+                font-weight: 700;
+            }
+            .btn.primary {
+                background: var(--brand);
+                color: #fff;
+            }
+            .btn.secondary {
+                background: #111;
+                color: #fff;
+            }
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(12, 1fr);
+                gap: 20px;
+                margin-top: 28px;
+                align-items: center;
+            }
+            .col {
+                grid-column: span 12;
+            }
+            @media (min-width: 900px) {
+                .col.text {
+                    grid-column: span 6;
+                }
+                .col.preview {
+                    grid-column: span 6;
+                }
+            }
+            .features {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+                gap: 10px;
+                margin-top: 22px;
+            }
+            .chip {
+                border: 1px solid var(--secondary);
+                border-radius: 10px;
+                padding: 10px 12px;
+                font-size: 14px;
+                color: #222;
+                background: #fff;
+            }
+            .door {
+                aspect-ratio: 1/1;
+                border-radius: 14px;
+                border: 1px solid var(--secondary);
+                background: linear-gradient(160deg, #dcdfe3, #eef1f5);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                background-image: url("assets/banner.jpg");
+                font-size: 13px;
+                color: #666;
+            }
+
+            .note {
+                font-size: 12px;
+                color: #666;
+                margin-top: 10px;
+            }
+        </style>
+    </head>
+    <body>
+        <section class="hero">
+            <div class="wrap">
+                <div class="grid">
+                    <div class="col text">
+                        <span class="badge">3D-configurator</span>
+                        <br />
+                        <br />
+
+                        <h1>Ontwerp uw eigen voordeur</h1>
+                        <p class="lead">
+                            Stel uw Select Windows voordeur samen in 3D. Kies het <strong>model</strong>, de
+                            <strong>kleur</strong>, het <strong>glas</strong> en alle <strong>details</strong>. Bekijk
+                            direct hoe het bij uw woning past en verstuur uw aanvraag met één klik.
+                        </p>
+
+                        <div class="cta">
+                            <a href="#" class="btn primary" onclick="scrollToConfigurator(event)">Start 3D‑configurator</a>
+                        </div>
+                        <hr />
+                        <p class="note">Tip: sla uw ontwerp op en deel het met uw adviseur in de showroom.</p>
+                    </div>
+                    <div class="col preview">
+                        <!-- Placeholder visual. Vervang door canvas/iframe van de configurator. -->
+                        <div class="door"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <script src="https://web.iconfigure.nl/inject/inject.iife.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" media="all" href="https://web.iconfigure.nl/inject/style.css" />
+        <section id="configurator" class="wrap">
+            <div
+                style="
+                    height: 100dvh !important;
+                    margin-bottom: -100vh;
+                    pointer-events: auto;
+                    position: sticky;
+                    scroll-behavior: auto;
+                    top: 0;
+                    width: 100vw !important;
+                "
+                id="iConfigure">
+                &nbsp;
+            </div>
+        </section>
+
+        <script>
+            function scrollToConfigurator(event) {
+                event.preventDefault();
+                document.getElementById('configurator').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            }
+
+            //window.addEventListener(
+            //    "message",
+            //    function (event) {
+            //        const iframeThanksPageUrl =
+            //            "https://www.indudoors.nl/bedankt-voor-uw-offerte";
+            //        if (event.data.state === "finished") {
+            //            //window.location.href =
+            //            //    iframeThanksPageUrl;
+            //        }
+            //    }
+            //);
+            let preConfig = {
+                product: "6e34fc1b-a65e-431a-b371-f6fd80f9bc66",
+                type_samenstelling: "melkmeisje",
+                ruiten_melkmeisje: "mm_boven,mm_rechts",
+                draairichting: "draairichting_links",
+                hoogte_sparing: "230",
+                breedte_sparing_2_elementen: "130",
+                hoogte_paneel_boven: "40",
+                breedte_paneel_rechts: "40",
+                textuur_db: "textuur_pvc_db",
+                kleur_db: "9001_db",
+                textuur_kb: "textuur_pvc_kb",
+                kleur_kb: "9001_kb",
+                textuur_di: "textuur_pvc_di",
+                kleur_di: "9001_di",
+                model: "basic",
+                greep: "lange_greep",
+                lengte_greep: "60",
+                kleur_greep: "kleur_greep_messing",
+                brievenbus: "homebox",
+                profiel: "profiel_facet",
+                profiel_afwerking: "verstek",
+                dorpel: "dorpel_zwart",
+                glas_textuur: "transparant",
+                active_step: "0",
+            };
+            injectApp(preConfig);
+        </script>
+    </body>
+</html>
