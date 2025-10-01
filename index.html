@@ -1,5 +1,4 @@
 <!-- @format -->
-
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -119,7 +118,6 @@
                 font-size: 13px;
                 color: #666;
             }
-
             .note {
                 font-size: 12px;
                 color: #666;
@@ -135,28 +133,26 @@
                         <span class="badge">3D-configurator</span>
                         <br />
                         <br />
-
                         <h1>Ontwerp uw eigen voordeur</h1>
                         <p class="lead">
                             Stel uw Select Windows voordeur samen in 3D. Kies het <strong>model</strong>, de
                             <strong>kleur</strong>, het <strong>glas</strong> en alle <strong>details</strong>. Bekijk
                             direct hoe het bij uw woning past en verstuur uw aanvraag met één klik.
                         </p>
-
                         <div class="cta">
-                            <a href="#" class="btn primary" onclick="scrollToConfigurator(event)">Start 3D‑configurator</a>
+                            <a href="#" class="btn primary" onclick="scrollToConfigurator(event)"
+                                >Start 3D‑configurator</a
+                            >
                         </div>
                         <hr />
                         <p class="note">Tip: sla uw ontwerp op en deel het met uw adviseur in de showroom.</p>
                     </div>
                     <div class="col preview">
-                        <!-- Placeholder visual. Vervang door canvas/iframe van de configurator. -->
                         <div class="door"></div>
                     </div>
                 </div>
             </div>
         </section>
-
         <script src="https://web.iconfigure.nl/inject/inject.iife.js" crossorigin="anonymous"></script>
         <link rel="stylesheet" media="all" href="https://web.iconfigure.nl/inject/style.css" />
         <section id="configurator" class="wrap">
@@ -164,7 +160,7 @@
                 style="
                     height: 100dvh !important;
                     margin-bottom: -100vh;
-                    pointer-events: auto;
+                    pointer-events: none;
                     position: sticky;
                     scroll-behavior: auto;
                     top: 0;
@@ -174,53 +170,6 @@
                 &nbsp;
             </div>
         </section>
-
-        <script>
-            function scrollToConfigurator(event) {
-                event.preventDefault();
-                document.getElementById('configurator').scrollIntoView({
-                    behavior: 'smooth'
-                });
-            }
-
-            //window.addEventListener(
-            //    "message",
-            //    function (event) {
-            //        const iframeThanksPageUrl =
-            //            "https://www.indudoors.nl/bedankt-voor-uw-offerte";
-            //        if (event.data.state === "finished") {
-            //            //window.location.href =
-            //            //    iframeThanksPageUrl;
-            //        }
-            //    }
-            //);
-            let preConfig = {
-                product: "6e34fc1b-a65e-431a-b371-f6fd80f9bc66",
-                type_samenstelling: "melkmeisje",
-                ruiten_melkmeisje: "mm_boven,mm_rechts",
-                draairichting: "draairichting_links",
-                hoogte_sparing: "230",
-                breedte_sparing_2_elementen: "130",
-                hoogte_paneel_boven: "40",
-                breedte_paneel_rechts: "40",
-                textuur_db: "textuur_pvc_db",
-                kleur_db: "9001_db",
-                textuur_kb: "textuur_pvc_kb",
-                kleur_kb: "9001_kb",
-                textuur_di: "textuur_pvc_di",
-                kleur_di: "9001_di",
-                model: "basic",
-                greep: "lange_greep",
-                lengte_greep: "60",
-                kleur_greep: "kleur_greep_messing",
-                brievenbus: "homebox",
-                profiel: "profiel_facet",
-                profiel_afwerking: "verstek",
-                dorpel: "dorpel_zwart",
-                glas_textuur: "transparant",
-                active_step: "0",
-            };
-            injectApp(preConfig);
-        </script>
+        <script src="main.js" crossorigin="anonymous"></script>
     </body>
 </html>
