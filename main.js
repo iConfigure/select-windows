@@ -13,19 +13,19 @@ function updateIframePointerEvents() {
   const rect = iframe.getBoundingClientRect();
 
   if (rect.top <= 1) {
-    iframe.style.pointerEvents = "auto";
+    // iframe.style.pointerEvents = "auto";
     const hero = document.getElementById("hero");
     if (hero) hero.remove();
     if (window.scrollY < configurator.offsetTop) {
       configurator.scrollIntoView({ behavior: "instant", block: "start" });
     }
   } else {
-    iframe.style.pointerEvents = "none";
+    // iframe.style.pointerEvents = "none";
   }
 }
 
 iframe = document.getElementById("iConfigure");
-iframe.style.pointerEvents = "none";
+// iframe.style.pointerEvents = "none";
 
 window.addEventListener("scroll", updateIframePointerEvents, { passive: true });
 window.addEventListener("load", updateIframePointerEvents);
