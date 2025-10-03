@@ -12,10 +12,9 @@ function updateIframePointerEvents() {
   const configurator = document.getElementById("configurator");
   const rect = iframe.getBoundingClientRect();
 
-  if (rect.top <= 0) {
+  if (rect.top <= 1) {
     iframe.style.pointerEvents = "auto";
     document.getElementById("hero").remove()
-    // Lock scroll: if user tries to scroll up, snap back to configurator
     if (window.scrollY < configurator.offsetTop) {
       configurator.scrollIntoView({ behavior: "instant", block: "start" });
     }
@@ -23,6 +22,9 @@ function updateIframePointerEvents() {
     iframe.style.pointerEvents = "none";
   }
 }
+
+iframe = document.getElementById("iConfigure");
+iframe.style.pointerEvents = "none";
 
 window.addEventListener("scroll", updateIframePointerEvents, { passive: true });
 window.addEventListener("load", updateIframePointerEvents);
