@@ -14,7 +14,8 @@ function updateIframePointerEvents() {
 
   if (rect.top <= 1) {
     iframe.style.pointerEvents = "auto";
-    document.getElementById("hero").remove()
+    const hero = document.getElementById("hero");
+    if (hero) hero.remove();
     if (window.scrollY < configurator.offsetTop) {
       configurator.scrollIntoView({ behavior: "instant", block: "start" });
     }
